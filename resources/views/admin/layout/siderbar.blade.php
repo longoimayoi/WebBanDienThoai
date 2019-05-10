@@ -2,13 +2,13 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-        @if(Auth::check())
+        @if(Session::has('login') && Session::get('login') == true)
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="upload/{{Auth::user()->Picture}}" class="img-circle" alt="User Image">
+                <img src="upload/{{Session::get('picture')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{Auth::user()->name}}</p>
+                <p>{{Session::get('name')}}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                 </ul>
             </li>--}}
-            @if(Auth::user()->role==1)
+            @if(Session::get('role')==1)
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-calendar"></i>

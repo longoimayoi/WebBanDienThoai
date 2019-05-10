@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\LoaiSP;
 class LoaiSPController extends Controller
 {
+
     public function getList()
     {
-        $loaisp=LoaiSP::paginate(10);
+        $loaisp=LoaiSP::all();
+
         return view('admin/loaisp/list_loaisp',compact('loaisp'));
     }
     public function getAddLoaiSP()

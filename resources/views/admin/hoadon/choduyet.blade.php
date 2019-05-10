@@ -41,8 +41,8 @@
                                     <td>{{$cd->SDT}}</td>
                                     <td>@if($cd->TrangThai ==0) {{"Chờ duyệt"}} @endif</td>
                                     <td>{{$cd->created_at}}</td>
-                                    <td><a href="admin/hoadon/duyet/{{$cd->id}}">Duyệt</a></td>
-                                    <td><a onclick="return confirm('Bạn có muốn xóa?')" href="admin/hoadon/xoa/{{$cd->id}}">Delete</a></td>
+                                    <td><a href="admin/hoadon/duyetGH/{{$cd->id}}">Duyệt</a></td>
+                                    <td><a onclick="return confirm('Bạn có muốn xóa?')" href="admin/hoadon/XoaGH/{{$cd->id}}">Delete</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

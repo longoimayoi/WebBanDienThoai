@@ -7,78 +7,35 @@
                     <div class="box-header">
                         <h3 class="box-title">List Loại SP</h3>
                     </div>
+                    <b>Row Selection Event: </b><span id="select_row_display_div"></span>
+                    <br><br>
                     @if(session('thongbao'))
                         <div class="alert alert-success">
                             {{session('thongbao')}}
                         </div>
                 @endif
                 <!-- /.box-header -->
-                    <div class="box-body">
-{{--
-                        <div id="grid_pivot" style="margin: 5px auto; width: auto; height: 500px;" role="grid" class="pq-grid pq-theme ui-widget ui-widget-content ui-corner-all pq-disable-select">
-                            <div class="pq-grid-top ui-widget-header ui-corner-top">
-                                <div class="pq-grid-title ui-corner-top" style="display: none;">&nbsp;</div>
-                                <div class="pq-toolbar-export pq-toolbar" style>
-                                    <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button">
-                                        <span class="ui-button-icon-primary ui-icon ui-icon-document"></span>
-                                        <span class="ui-button-text">Export to Excel(xlsx)</span>
-                                    </button>
-                                    <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button">
-                                        <span class="ui-button-icon-primary ui-icon ui-icon-wrench"></span>
-                                        <span class="ui-button-text">Toolbar Panel</span>
-                                    </button>
-                                    <label>Filter: <input type="text" placeholder="Enter text"></label>
 
-                            </div>
-                                <div class="pq-slider-icon pq-no-capture">
-                                    <span class="ui-widget-header pq-ui-button">
-                                        <span class="ui-icon ui-icon-arrow-4-diag"></span>
-                                    </span>
-                                    <span class="ui-widget-header pq-ui-button">
-                                        <span class="ui-icon ui-icon-circle-triangle-n"></span>
-                                    </span></div>
-                            </div>
-                            <div class="pq-grid-center-o">
-                                <div class="pq-tool-panel" style="display: none; height: 1px;"></div>
-                                <div class="pq-grid-center" style="height: 464px;">
-                                    <div class="pq-header-outer ui-widget-header" style="width: 939px; height: 57px;">
-                                        <div class="pq-grid-cont">
-                                            <div class="pq-cont-inner pq-cont-right">
-                                                <div class="pq-grid-row " role="row" id="pq-head-row-u0-0-right" style="top: 0px; height: 28px; width: 100%;">
-                                                    <div pq-col-indx="6" pq-row-indx="0" role="gridcell" id="pq-head-cell-u0-0-6-right" class="pq-grid-col  pq-collapsible-th" style="left: 217px; width: 78px; height: 28px;">
-                                                        <div class="pq-td-div"><span class="pq-col-collapse pq-icon-hover ui-icon ui-icon-plus">
-
-                                                            </span><span class="pq-title-span">2000</span><span class="pq-col-sort-icon"></span>
-                                                            <span class="pq-col-sort-count"></span>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pq-grid-row pq-grid-title-row" role="row" id="pq-head-row-u0-1-right" style="top:28px;height:28px;width:100%;">
-                                                    <div pq-col-indx="6" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-6-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 217px; width: 78px; height: 28px;">
-                                                        <div class="pq-td-div"><span class="pq-title-span">sum(Total)</span>
-                                                            <span class="pq-col-sort-icon">
-
-                                                            </span><span class="pq-col-sort-count"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div pq-col-indx="10" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-10-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 295px; width: 78px; height: 28px;">
-                                                        <div class="pq-td-div"><span class="pq-title-span">sum(Total)</span>
-                                                            <span class="pq-col-sort-icon">
-
-                                                            </span><span class="pq-col-sort-count"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div pq-col-indx="14" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-14-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 373px; width: 78px; height: 28px;"><div class="pq-td-div"><span class="pq-title-span">sum(Total)</span><span class="pq-col-sort-icon"></span><span class="pq-col-sort-count"></span></div></div><div pq-col-indx="18" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-18-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 451px; width: 78px; height: 28px;"><div class="pq-td-div"><span class="pq-title-span">sum(Total)</span><span class="pq-col-sort-icon"></span><span class="pq-col-sort-count"></span></div></div><div pq-col-indx="22" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-22-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 529px; width: 78px; height: 28px;"><div class="pq-td-div"><span class="pq-title-span">sum(Total)</span><span class="pq-col-sort-icon"></span><span class="pq-col-sort-count"></span></div></div><div pq-col-indx="26" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-26-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 607px; width: 78px; height: 28px;"><div class="pq-td-div"><span class="pq-title-span">sum(Total)</span><span class="pq-col-sort-icon"></span><span class="pq-col-sort-count"></span></div></div><div pq-col-indx="30" pq-row-indx="1" role="gridcell" id="pq-head-cell-u0-1-30-right" class="pq-grid-col pq-align-right  pq-grid-col-leaf" style="left: 685px; width: 78px; height: 28px;"><div class="pq-td-div"><span class="pq-title-span">sum(Total)</span><span class="pq-col-sort-icon"></span><span class="pq-col-sort-count"></span></div></div></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
---}}
-
-                            <table id="example2" class="table table-bordered table-hover">
+                    <div id="grid_array"></div>
+                    <div id="pager2"></div>
+                    <div title="Grid in Dialog" id="popup" style="overflow:hidden;">
+                        <div id="grid_popup"></div>
+                    </div>
+                    <div>
+                        <button type="button" id="open_popup">Open Popup</button>
+                    </div>
+                    <div id="grid_crud" style="margin:auto;"></div>
+                    <div id="popup-dialog-crud" style="display:none;">
+                        <form id="crud-form">
+                            <table align="center">
+                                <tbody><tr>
+                                    <td>Company Name:</td>
+                                    <td><input type="text" name="tenloai"></td>
+                                </tr>
+                                </tbody></table>
+                        </form>
+                    </div>
+                   {{--         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Tên Loại</th>
@@ -101,11 +58,11 @@
 
                             </tr>
                             </tfoot>
-                        </table>
+                        </table>--}}
                     </div>
 
                     <!-- /.box-body -->
-                </div>
+
                 <!-- /.box -->
 
                 <!-- /.box -->
@@ -115,4 +72,84 @@
 
         <!-- /.row -->
     </section>
+@endsection
+@section('script')
+    <script>
+        $(function(){
+
+          /*  $('#grid_array').pqGrid({
+                url:'http://localhost:8888/AdminWebBanHang/public/api/v1/LoaiSP',
+                method: "GET",
+                datatype: "json",
+
+                colModel:[
+                    { title: 'Mã Loại', name: 'id', key: true, width: 75 ,dataType:"integer",dataIndx: "id"},
+                    { title: 'Tên loại', name: 'TenLoai', width: 150,dataType:"string",dataIndx: "TenLoai" },
+                    { title: 'Ngày lập', name: 'created_at', width: 150,dataType:"string" ,dataIndx: "created_at" }],
+                loadonce: true,
+                rowNum:10,
+                caption:"",
+                viewrecords: true,
+
+            });*/
+
+
+              var data = [   @foreach($loaisp as $loai)
+
+                  [ 'Edit', {{$loai->id}},'{{$loai->TenLoai}}','{{$loai->created_at}}'],
+                  @endforeach ];
+
+              var obj = {width: 1000,
+                  scrollModel: { autoFit: true },
+                  height: 350,
+                  showBottom: true,
+                  resizable: true,
+                  editable: false,
+                  selectionModel: { type: 'row', fireSelectChange: true },
+                  swipeModel: {on: false}};
+
+              obj.colModel =[{title:" ",width:150},
+                  {title:"Mã Loại", width:150, dataType:"integer",align:"center"/*,dataIndx: "id"*/},
+                  {title:"Tên loại ", width:300, dataType:"string", align:"center"/*,dataIndx: "tenloai"*/},
+                  {title:"Ngày lập ", width:400, dataType:"string", align:"center"/*,dataIndx: "created_at"*/}];
+              obj.dataModel = {data:data};
+            obj.pageModel={type:'local'};
+                var grid= $("#grid_array").pqGrid(obj);
+              grid.pqGrid("refreshView");
+            $("button#open_popup").button().click(function (evt) {
+                $("#popup")
+                    .dialog({
+
+                        height: 400,
+                        width: 700,
+                        modal: true,
+                        open: function (evt, ui) {
+                            var ob = {
+                                width: "auto", //auto width
+                                height: "100%-30", //height in %age
+                                selectionModel: { type: 'cell' },
+                                autoSizeInterval: 0,
+                                scrollModel: { autoFit: true },
+                                dragColumns: { enabled: false },
+
+                            };
+                            ob.colModel =[{title:" ",width:150},
+                                {title:"Mã Loại", width:150, dataType:"integer",align:"center"/*,dataIndx: "id"*/},
+                                {title:"Tên loại ", width:300, dataType:"string", align:"center"/*,dataIndx: "tenloai"*/},
+                                {title:"Ngày lập ", width:400, dataType:"string", align:"center"/*,dataIndx: "created_at"*/}];
+                            ob.dataModel = { data: data };
+                            $("#grid_popup").pqGrid(ob);
+                        },
+                        close: function () {
+                            $("#grid_popup").pqGrid('destroy');
+                        },
+                        show: {
+                            effect: "blind",
+                            duration: 500
+                        }
+                    });
+            }).click();
+        });
+
+    </script>
 @endsection

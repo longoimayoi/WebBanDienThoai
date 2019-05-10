@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="admin_asset/images/icons/favicon.ico"/>
+
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="admin_asset/login/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -36,7 +36,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+            <div class="login100-form-title" >
 					<span class="login100-form-title-1">
 						Sign Up
 					</span>

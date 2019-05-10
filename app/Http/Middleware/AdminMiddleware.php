@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Session;
 use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
@@ -16,12 +17,12 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check())
+        if(Session::has('login') && Session::get('login') == true)
+        /*if(Auth::check())*/
         {
-
-           if(Auth::user()->role==1)
+           if(Session::get('role')==1)
                 return $next($request);
-           else if(Auth::user()->role==0)
+           else if(Session::get('role')==0)
                 return redirect('user/pages/index');
         }
         else

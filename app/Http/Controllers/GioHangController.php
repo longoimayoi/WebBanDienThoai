@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\LoaiSP;
 use Illuminate\Http\Request;
 use App\SanPham;
+use App\Mail\Sendmail_ThanhToanGH;
 use Cart;
 use App\HoaDon;
 use App\CTHD;
+use Mail;
+use Session;
 use Illuminate\Support\Facades\View;
 
 class GioHangController extends Controller
@@ -76,9 +79,14 @@ class GioHangController extends Controller
             $cthd->ThanhTien=$item->price*$item->quantity;
             $cthd->save();
         }
-
+        $email=$hoadon->user->email;
+        $subject='Shop Phương Long -- đã nhận đơn hàng'.$hoadon->id.'_Your order request has been received';
+        $message='chào '.$email.' Yêu cầu đặt hàng #'.$hoadon->id.' của bạn đã được tiếp nhạn và đang chờ xử lý thòi gian 
+        đặt hàng là '.$hoadon->created_at.' Với hình thức thanh toán khi nhận hàng Chúng tôi sẽ tiếp tục cập nhật trạng thái
+         tiếp theo của đơn hàng';
+        Mail::to($email)->send(new Sendmail_ThanhToanGH($subject,$message));
+        Session::flash('thanhtoan', 'Bạn dã thanh toán thành công');
         Cart::clear();
         return back();
     }
-
 }

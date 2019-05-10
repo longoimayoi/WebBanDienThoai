@@ -9,6 +9,11 @@
                     </div>
         <!-- Info boxes -->
         <div class="box-body">
+            @if(session('thanhtoan'))
+                <div style="text-align: center;" class="alert alert-success">
+                    {{session('thanhtoan')}}
+                </div>
+            @endif
             @if(count($cart) >0)
             <table class="table table-bordered table-hover">
 
@@ -99,7 +104,7 @@
                             <p>
 
                             </p>
-                            <form action="user/pages/thanhtoan/{{Auth::user()->id}}" method="post" id="formdk">
+                            <form action="user/pages/thanhtoan/{{Session::get('id')}}" method="post" id="formdk">
                                 @csrf
                                 <div class="form-group">
                                     <label>Tên người nhận</label>

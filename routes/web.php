@@ -54,6 +54,8 @@ Route::get('forgot','UserController@getForgot');
         });
         Route::group(['prefix' => 'hoadon'], function() {
             Route::get('list_choduyet',['as'=>'list_choduyet','uses'=>'HoaDonController@ChoDuyet']);
+            Route::get('duyetGH/{id}',['as'=>'duyetGH','uses'=>'HoaDonController@Duyet']);
+            Route::get('XoaGH/{id}',['as'=>'XoaGH','uses'=>'HoaDonController@Xoa']);
             Route::get('list_daduyet',['as'=>'list_daduyet','uses'=>'HoaDonController@DaDuyet']);
 
         });

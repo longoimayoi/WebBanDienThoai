@@ -7,18 +7,21 @@ use App\SanPham;
 use Illuminate\Http\Request;
 use App\User;
 use Cart;
+use Session;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
         $i=0;
         $cart=Cart::getContent();
         $total=Cart::getTotal();
         $loaisp=LoaiSP::all();
         $sanpham=SanPham::all();
+        $this->request = $request;
         view::share(compact('loaisp','sanpham','cart','total','i'));
 
     }
@@ -81,7 +84,7 @@ class UserController extends Controller
                 'confirm.same'=>'Mật khẩu không giống nhau',
             ]);
         $user->name=$request->name;
-        $user->password=bcrypt($request->password);
+        $user->password=$request->password;
         $user->role=$request->quyen;
         $user->save();
         return redirect('admin/user/edit_user/'.$id)->with('thongbao','Sửa user thành công');
@@ -99,15 +102,35 @@ class UserController extends Controller
     }
     public function postLogin(Request $request)
     {
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+        /*if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
         {
             return redirect('index');
         }
         else
         {
             return redirect('login')->with('thongbao','Sai tài khoản hoặc mật khẩu');
-        }
-    }
+        }*/
+        echo $username=$request->username;
+        echo $password=$request->password;
+        $user=User::all();
+        foreach ($user as $us)
+        {
+        if($us->username==$username && $us->password==$password)
+            {
+                $request->session()->put('login',true);
+                $request->session()->put('name',$us->name);
+                $request->session()->put('picture',$us->Picture);
+                $request->session()->put('role',$us->role);
+                $request->session()->put('id',$us->id);
+                return redirect('index');
+            }
+            else
+            {
+                echo 'Sai tài khoản hoặc mật khẩu';
+            }
+
+         }
+     }
     public function getregister()
     {
         return view('admin/login/register');
@@ -124,16 +147,17 @@ class UserController extends Controller
                 'confirm.same'=>'Password không giống nhau',
             ]);
         $user=new User();
-        $user->name=$request->name;
+        $user->username=$request->name;
         $user->email=$request->email;
         $user->role=0;
-        $user->password=bcrypt($request->password);
+        $user->name=0;
+        $user->password=$request->password;
         $user->save();
         return redirect('login');
     }
-    public function getLogout()
+    public function getLogout(Request $request)
     {
-        Auth::logout();
+        $request->session()->flush();
         return redirect('login');
     }
     public function getProfile($id)

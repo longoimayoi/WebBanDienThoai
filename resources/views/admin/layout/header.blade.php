@@ -1,7 +1,8 @@
 <header class="main-header">
 
     <!-- Logo -->
-    @if(Auth::user()->role==1)
+
+    @if(Session::get('role')==1)
     <a href="index" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
@@ -26,7 +27,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
-                @if(Auth::user()->role==0)
+                @if(Session::get('role')==0)
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-cart-arrow-down"></i>
@@ -58,7 +59,7 @@
                             </ul>
 
                         </li>
-                        <li class="footer"><a href="user/pages/giohang/{{Auth::user()->id}}">See All Cart</a></li>
+                        <li class="footer"><a href="user/pages/giohang/{{Session::get('id')}}">See All Cart</a></li>
                     </ul>
                 </li>
                 @endif
@@ -182,20 +183,20 @@
                         </li>
                     </ul>
                 </li>
-                @if(Auth::check())
+            @if(Session::has('login') && Session::get('login') == true)
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="upload/{{Auth::user()->Picture}}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">{{Auth::user()->name}}</span>
+                        <img src="upload/{{Session::get('picture')}}" class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{Session::get('name')}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="upload/{{Auth::user()->Picture}}" class="img-circle" alt="User Image">
+                            <img src="upload/{{Session::get('picture')}}" class="img-circle" alt="User Image">
 
                             <p>
-                                {{Auth::user()->name}}
+                                {{Session::get('name')}}
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -217,10 +218,10 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="profile/{{Auth::user()->id}}" class="btn btn-default btn-flat">Profile</a>
+                                <a href="profile/{{Session::get('id')}}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-center">
-                                <a href="edit/{{Auth::user()->id}}" class="btn btn-default btn-flat">Edit</a>
+                                <a href="edit/{{Session::get('id')}}" class="btn btn-default btn-flat">Edit</a>
                             </div>
                             <div class="pull-right">
                                 <a href="logout" class="btn btn-default btn-flat">Sign out</a>

@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="admin_asset/images/icons/favicon.ico"/>
+
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="admin_asset/login/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -36,7 +36,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+            <div class="login100-form-title" style="">
 					<span class="login100-form-title-1">
 						Sign In
 					</span>
@@ -49,9 +49,9 @@
 
             <form class="login100-form validate-form" method="POST" >
                 @csrf
-                <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
+                <div class="wrap-input100 " >
                     <span class="label-input100">Email:</span>
-                    <input class="input100" type="text" name="email" placeholder="Enter email">
+                    <input class="input100" type="text" name="username" placeholder="Enter email">
                     <span class="focus-input100"></span>
 
                 </div>
